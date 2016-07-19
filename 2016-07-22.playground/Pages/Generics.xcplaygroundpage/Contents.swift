@@ -2,23 +2,23 @@
 
 import Foundation
 
-public struct Array2D<T> {
+public struct Array2D<Element> {
 
     // the underlying 1D array
-    public var contents: [T]
+    public var contents: [Element]
 
     // dimensions
     public let rows: Int
     public let cols: Int
 
     // Creates a new 2D array of given dimensions with a default value.
-    public init(cols: Int, rows: Int, repeatedValue: T) {
+    public init(cols: Int, rows: Int, repeatedValue: Element) {
         self.cols = cols
         self.rows = rows
-        self.contents = Array(count: cols * rows, repeatedValue: repeatedValue)
+        self.contents = Array(repeating: repeatedValue, count: cols * rows)
     }
 
-    public subscript(col: Int, row: Int) -> T {
+    public subscript(col: Int, row: Int) -> Element {
         get {
             return contents[cols * row + col]
         }

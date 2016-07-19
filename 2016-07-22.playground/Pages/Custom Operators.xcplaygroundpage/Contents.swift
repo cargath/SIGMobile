@@ -17,3 +17,10 @@ public struct Position: Equatable {
 public func == (lhs: Position, rhs: Position) -> Bool {
     return lhs.x == rhs.x && lhs.y == rhs.y
 }
+
+let a = Position(x: 1, y: 1)
+let b = Position(x: 1, y: 1)
+let c = Position(x: 3, y: 6)
+
+print(a == b)
+print(a == c)

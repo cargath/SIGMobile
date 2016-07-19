@@ -13,7 +13,7 @@ struct Car {
 let aCar = Car()
 var anotherCar = aCar
 
-anotherCar.setDriving(true)
+anotherCar.setDriving(bool: true)
 
 aCar.isDriving
 anotherCar.isDriving

@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios'>
+<playground version='6.0' target-platform='ios' display-mode='raw'>
     <pages>
         <page name='Basics'/>
+        <page name='Classes'/>
+        <page name='Structs'/>
         <page name='Reference Types'/>
         <page name='Value Types'/>
+        <page name='Enums'/>
+        <page name='Optionals'/>
+        <page name='Computed Properties'/>
+        <page name='didSet &amp; willSet'/>
         <page name='Extensions'/>
         <page name='Protocols'/>
         <page name='Default Implementations'/>
         <page name='Generics'/>
         <page name='Custom Operators'/>
-        <page name='Enums'/>
         <page name='Closures'/>
     </pages>
 </playground>
