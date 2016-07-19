@@ -52,3 +52,13 @@ func doStuff() {
     print(optionalA)
 }
 
+
+//: Typecasting
+let something: Any = 42
+
+if let integer = something as? Int {
+    print(integer)
+}
+
+let integer = something as! Int // again, don't do this unless absolutely necessary
+
