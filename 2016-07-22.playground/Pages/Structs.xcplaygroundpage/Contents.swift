@@ -1,6 +1,7 @@
-//: Structs
+//: # Structs
+//: * are value types
+//: * are final
 
-// always final
 struct Point {
 
     let x: Int
@@ -16,4 +17,4 @@ struct Point {
 
 }
 
-let point = Point(x: 1, y: 2) // default initializers
+let point = Point(x: 1, y: 2) // default initializer

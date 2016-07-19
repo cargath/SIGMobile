@@ -1,4 +1,4 @@
-//: Reference Types
+//: # Reference Types
 
 class Car {
 
@@ -15,5 +15,6 @@ let anotherCar = aCar
 
 anotherCar.setDriving(bool: true)
 
-aCar.isDriving
-anotherCar.isDriving
+//: Both `aCar` and `anotherCar` point to the same object:
+aCar.isDriving // true
+anotherCar.isDriving // true

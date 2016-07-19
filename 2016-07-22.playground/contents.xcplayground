@@ -6,15 +6,15 @@
         <page name='Structs'/>
         <page name='Reference Types'/>
         <page name='Value Types'/>
+        <page name='Advanced Properties'/>
+        <page name='Generics'/>
         <page name='Enums'/>
         <page name='Optionals'/>
-        <page name='Computed Properties'/>
-        <page name='didSet &amp; willSet'/>
         <page name='Extensions'/>
         <page name='Protocols'/>
-        <page name='Default Implementations'/>
-        <page name='Generics'/>
-        <page name='Custom Operators'/>
+        <page name='Delegate Pattern'/>
         <page name='Closures'/>
+        <page name='Error Handling'/>
+        <page name='Other Stuff'/>
     </pages>
 </playground>

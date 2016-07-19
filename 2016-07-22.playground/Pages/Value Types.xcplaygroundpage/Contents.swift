@@ -1,4 +1,4 @@
-//: Values Types
+//: # Values Types
 
 struct Car {
 
@@ -15,5 +15,6 @@ var anotherCar = aCar
 
 anotherCar.setDriving(bool: true)
 
-aCar.isDriving
-anotherCar.isDriving
+//: `aCar` and `anotherCar` are two different instances of `Car`
+aCar.isDriving // false
+anotherCar.isDriving // true

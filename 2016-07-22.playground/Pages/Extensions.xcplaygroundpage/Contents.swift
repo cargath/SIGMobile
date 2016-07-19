@@ -1,7 +1,9 @@
-//: Extensions
+//: # Extensions
 
 import UIKit
 
+
+//: Extend an existing class with new functionality
 public extension UIView {
 
     @available(iOS 9.0, *)
@@ -16,6 +18,8 @@ public extension UIView {
 
 }
 
+
+//: There is even pattern matching for extensions
 public extension Array where Element: NSLayoutConstraint {
 
     @available(iOS 8.0, *)
@@ -33,3 +37,4 @@ public extension Array where Element: NSLayoutConstraint {
     }
     
 }
+
