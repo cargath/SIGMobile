@@ -1,33 +1,31 @@
 //: # Optionals
-
-//: Declare Optionals
+//: ## Declare Optionals
 var optionalValue: Int?
 
 optionalValue = 5
 
 
-//: Optional Chaining: unwrap with ?
-//: (returns an optional that might be nil)
+//: ## Unwrap optionals
+//: ### Optional Chaining
 let unwrapped = optionalValue?.advanced(by: 3)
+// Returns an optional that might be nil.
 
 
-//: Force unwrap with !
-//: (crashes when nil - only use this when absolutely necessary)
+//: ### Force unwrap
 let forceUnwrapped = optionalValue!.advanced(by: 3)
+// Crashes when nil.
+// Only use this when absolutely necessary.
 
 
-//: Declare implicitly unwrapped optionals
+//: ### Implicitly unwrapped optionals
 var implicit: Int!
 
 implicit = 8
 
-
-//: Unwraps automatically
-//: (but crashes when nil - only use this when absolutely necessary)
-implicit.advanced(by: 4)
+implicit.advanced(by: 4) // Unwraps automatically (crashes when nil)
 
 
-//: Unwrapping optionals with `if-let`
+//: ### `if-let`
 var optionalA: Int? = 4
 
 if let optionalA = optionalA {
@@ -35,25 +33,27 @@ if let optionalA = optionalA {
 }
 
 
-//: Unwrapping multiple optionals + pattern matching
 var optionalB: Int? = 12
 
+// Unwrapping multiple optionals + pattern matching
 if let optionalA = optionalA, optionalA != 2,
    let optionalB = optionalB, optionalA != optionalB {
     print(optionalA, optionalB)
 }
 
 
-//: Unwrapping optionals with `guard-let`
+//: ### `guard-let`
 func doStuff() {
+
     guard let optionalA = optionalA else {
         return
     }
+
     print(optionalA)
 }
 
 
-//: Typecasting
+//: ### Typecasting
 let something: Any = 42
 
 if let integer = something as? Int {

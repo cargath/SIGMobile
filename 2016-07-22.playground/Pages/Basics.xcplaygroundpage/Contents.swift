@@ -1,5 +1,4 @@
 //: # Basics
-
 //: ## Constants
 let g = 9.81 // infers 'Double'
 
@@ -12,14 +11,21 @@ var y: Float = 0 // type annotation to explicitly use 'Float'
 y = 42 / 4
 
 
-//: ## Arrays, Dictionaries and Tuples
+//: ## Collection Types
+//: ### Arrays
 let anArray: [Int] = [1, 2, 3, 4]
 
+
+//: ### Dictionaries
 let aDictionary: [String: Int] = [
     "Foo": 42,
     "Bar": 32
 ]
 
+let valueForKey = aDictionary["Foo"] // 42
+
+
+//: ### Tuples
 let aTuple: (Int, Int) = (1, 2)
 let (first, second) = aTuple
 
@@ -35,7 +41,7 @@ func sum(x: Int, y: Int) -> Int {
 let s = sum(x: 2, y: 2)
 
 
-//: inner vs. outer parameter names
+//: ### inner vs. outer parameter names
 func append(value i: Int, to array: [Int]) -> [Int] {
     var newArray = array
     newArray.append(i)
@@ -46,7 +52,7 @@ let array: [Int] = []
 let newArray = append(value: 42, to: array)
 
 
-//: use underscores to surpress outer parameter names
+//: ### use underscores to surpress outer parameter names
 func mul(_ x: Int, _ y: Int) -> Int {
     return x * y
 }
@@ -54,24 +60,14 @@ func mul(_ x: Int, _ y: Int) -> Int {
 let m = mul(2, 2)
 
 
-//: ## Loops
-
-//: for-loops
-for i in 0 ... 10 {
-    print(i)
+//: ### Default parameters
+func doSomething(_ with: String = "foobar") {
+    print(with)
 }
 
-
-//: for-each-loops
-let stringArray = ["Foo", "Bar"]
-
-for string in stringArray {
-    print(string)
-}
+doSomething()
 
 
-//: pattern matching
-for string in stringArray where string == "Foo" {
-    print(string)
-}
+//: ## Typealiases
+typealias JSONObject = [String: AnyObject]
 

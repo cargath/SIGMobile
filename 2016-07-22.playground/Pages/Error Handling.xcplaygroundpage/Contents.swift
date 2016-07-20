@@ -1,6 +1,5 @@
 //: # Error handling
-
-//: ## Define a custom error type
+//: ## Error types
 enum MyError: ErrorProtocol {
     case TerribleError(msg: String)
 }
@@ -18,10 +17,16 @@ func foobar(_ value: Bool) throws -> Int {
 
 //: ## Catching an error
 do {
+    defer {
+        // Called when leaving `do` (if an error is thrown or not),
+        // but before entering `catch`
+        print("Do this eventually")
+    }
     try foobar(false)
 } catch {
     print("whoops")
 }
+
 
 do {
     try foobar(false)
@@ -29,11 +34,13 @@ do {
     print(error)
 }
 
+
 do {
     try foobar(false)
 } catch MyError.TerribleError {
     print("whoops")
 }
+
 
 do {
     try foobar(false)
@@ -43,9 +50,9 @@ do {
 
 
 //: ## Ignoring an error
-let forced = try! foobar(false) // crashes upon error
-
 let optional = try? foobar(false) // `nil` when an error was thrown
+
+let forced = try! foobar(false) // crashes upon error
 
 
 //: ## Rethrowing
@@ -66,7 +73,7 @@ extension Array {
 }
 
 
-//: The above can be shortened to:
+// The above can be shortened to:
 extension Array {
 
     func reEach(iterator: (Element) throws -> Void) rethrows {

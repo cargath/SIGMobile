@@ -1,6 +1,5 @@
 //: # Closures
-
-//: Functions can be used as variables in Swift
+//: Functions can be used as variables in Swift.
 func sum(a: Int, b: Int) -> Int {
     return a + b
 }
@@ -9,7 +8,7 @@ let function = sum // (Int, Int) -> Int
 let result = function(a: 2, b: 2) // 4
 
 
-//: Functions can also be used as parameters in Swift
+//: Functions can also be passed as parameters in Swift.
 func higherOrderFunction(value: Int, function: (Int, Int) -> Int) -> Int {
     return function(value, 40)
 }
@@ -17,7 +16,13 @@ func higherOrderFunction(value: Int, function: (Int, Int) -> Int) -> Int {
 let answer = higherOrderFunction(value: 2, function: sum) // 42
 
 
-//: Functions can be declared in-place
+//: ## λ Functions
+//: i.e. implement function in place.
+let lamdaResult = { (integer: Int) -> Int in
+    integer * 2
+}(42)
+
+
 var anotherAnswer = higherOrderFunction(value: 2, function: { (a: Int, b: Int) -> Int in
     return a * b
 })
@@ -29,13 +34,13 @@ anotherAnswer = higherOrderFunction(value: 2) { (a: Int, b: Int) -> Int in
 }
 
 
-//: Swift can also infer the correct types
+//: Swift can also infer the correct types:
 anotherAnswer = higherOrderFunction(value: 2) { a, b in
     return a * b
 }
 
 
-//: And you can use $0...$n to access parameters
+//: And you can use $0...$n to access parameters:
 anotherAnswer = higherOrderFunction(value: 2) {
     return $0 * $1
 }
@@ -50,12 +55,19 @@ array.forEach { // looks just like a `for-in` loop
 }
 
 
+//: ## Examples
 //: The Swift Standard Library makes extensive use of Closures, and you should, too.
+let filteredArray = [1, 2, 3, 4, 5].filter { $0 > 2 } // [3, 4, 5]
+
 let total = array.reduce(0, combine: +) // 10
 
 let incrementedArray = array.map { $0 + 1 } // [2, 3, 4, 5]
 
 let nonOptionals = [1, nil, 3, 42, nil].flatMap { $0 } // [1, 3, 42]
 
-let filteredArray = [1, 2, 3, 4, 5].filter { $0 > 2 } // [3, 4, 5]
+let wordList = ["Foo", "Bar", "Blub"].enumerated().map { index, value in
+    "\(index + 1). \(value)"
+} // ["1. Foo", "2. Bar", "3. Blub"]
+
+
 

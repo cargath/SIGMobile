@@ -1,5 +1,4 @@
 //: # Advanced properties
-
 //: ## Computed properties
 class ComputedPerson {
 
@@ -28,8 +27,7 @@ class StoredPerson {
     var name: String = ""
 
 
-//: Custom getters and setters
-
+//: ### Custom getters and setters
     var _age: Int = 0
 
     var age: Int {
@@ -42,8 +40,7 @@ class StoredPerson {
     }
     
 
-//: `didSet` is called _after_ the variable was changed
-
+//: ### `didSet` is called _after_ the variable was changed
     var firstName: String = "" {
         didSet {
             name = "\(firstName) \(lastName)"
@@ -53,8 +50,7 @@ class StoredPerson {
     }
 
 
-//: `willSet` is called _before_ the variable is changed
-
+//: ### `willSet` is called _before_ the variable is changed
     var lastName: String = "" {
         willSet {
             name = "\(firstName) \(lastName)"
@@ -62,8 +58,6 @@ class StoredPerson {
             print("new value: " + newValue) // you have access to the new value
         }
     }
-
-
 
 }
 
@@ -86,19 +80,19 @@ class MyClass {
 }
 
 
-//: ## setup objects in place
+//: ## Use λ functions to configure constant properties in place
 import UIKit
 
 class MyView: UIView {
 
     let view: UIView = {
         let view = UIView()
-        view.backgroundColor = .blue()
+        view.backgroundColor = .blue() // infers `UIColor`
         return view
     }()
 
     let anotherView: UIView = { view in
-        view.backgroundColor = .blue()
+        view.backgroundColor = .blue() // infers `UIColor`
         return view
     }(UIView())
 

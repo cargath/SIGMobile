@@ -1,6 +1,7 @@
 //: # Structs
-//: * are value types
-//: * are final
+//: - are value types
+//: - are final
+//: - copy on write
 
 struct Point {
 

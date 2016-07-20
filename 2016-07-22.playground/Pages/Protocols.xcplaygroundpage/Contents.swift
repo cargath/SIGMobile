@@ -1,12 +1,11 @@
 //: # Protocols
-
-//: Protocols declare an interface
+//: ## Declare interface
 protocol Edible {
     func eat()
 }
 
 
-//: Make a class conform to a protocol
+//: ## Conform to a protocol
 class Cupcake: Edible {
     func eat() {
         print("yum")
@@ -18,7 +17,7 @@ let cupcake = Cupcake()
 cupcake.eat()
 
 
-//: Default Implementations
+//: ## Default Implementations
 protocol Shooting {
     var shootingSound: String { get }
     func shoot()
@@ -38,7 +37,7 @@ let gameObject = GameObject()
 gameObject.shoot()
 
 
-//: Protocols can be extended with new functionality, too
+// Protocols can be extended with new functionality, too
 extension Shooting {
     func reload() {
         print("click clack")
@@ -48,46 +47,60 @@ extension Shooting {
 gameObject.reload()
 
 
-//: ## Examples
-//: The Swift Standard Library shows how powerful protocol oriented programming can be.
+//: ## Associated types
+//: Protocols have associated types in place of generics.
+protocol ComparatorProtocol {
 
-//: ### Equatable
-public struct Position: Equatable {
+    associatedtype T: Comparable
+
+    static func compare(first: T, second: T) -> Bool
+
+}
+
+extension ComparatorProtocol {
+
+    static func compare(first: T, second: T) -> Bool {
+        return first == second
+    }
+
+}
+
+struct StringComparator: ComparatorProtocol {
+
+    typealias T = String
+
+}
+
+let areStringsEqual = StringComparator.compare(first: "Foo", second: "Bar") // false
+
+
+//: ## Example
+//: The Swift Standard Library shows how powerful protocol oriented programming can be.
+public struct Position {
 
     public let x: Int
     public let y: Int
 
-    public init(x: Int, y: Int) {
-        self.x = x
-        self.y = y
-    }
+}
 
+let a = Position(x: 1, y: 1)
+let b = Position(x: 1, y: 1)
+
+
+//: ### Comparable
+//: Implement `Comparable` and get the other operators for free
+extension Position: Comparable {
+    // Protocol conformances can be declared in extensions
 }
 
 public func == (lhs: Position, rhs: Position) -> Bool {
     return lhs.x == rhs.x && lhs.y == rhs.y
 }
 
-
-let a = Position(x: 1, y: 1)
-let b = Position(x: 1, y: 1)
-let c = Position(x: 3, y: 6)
-
-print(a == b) // true
-print(a == c) // false
-
-
-//: ### Comparable
-extension Position: Comparable {
-    // Note that we already implemented `==` for `Equatable`
-}
-
 public func < (lhs: Position, rhs: Position) -> Bool {
     return lhs.x + lhs.y < rhs.x + rhs.y
 }
 
-
-//: Implement `Comparable` and get the other operators for free
 let larger = a > b
 let smallerOrEqual = a <= b
 

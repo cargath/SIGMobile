@@ -2,6 +2,8 @@
 
 import Foundation
 
+
+//: ## Generic classes / structs
 public struct Array2D<Element> {
 
     // the underlying 1D array
@@ -19,8 +21,7 @@ public struct Array2D<Element> {
     }
 
 
-//: Note that we can create a custom array-operator by defining `subscript`
-
+    // Note that we can create a custom array-operator by defining `subscript`.
     public subscript(col: Int, row: Int) -> Element {
         get {
             return contents[cols * row + col]
@@ -35,4 +36,20 @@ public struct Array2D<Element> {
 
 let array2D = Array2D(cols: 16, rows: 9, repeatedValue: "Foo") // creates an Array2D<String>
 let element = array2D[3, 2] // access an element
+
+
+//: ## Type constraints
+protocol TypeProtocol {
+    //
+}
+
+class GenericTypeWrapper<Type: TypeProtocol> {
+    //
+}
+
+
+//: ## Generic functions
+func compare<C: Comparable>(first: C, second: C) -> Bool {
+    return first < second
+}
 

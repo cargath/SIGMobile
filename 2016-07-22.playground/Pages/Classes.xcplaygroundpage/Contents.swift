@@ -1,6 +1,6 @@
 //: # Classes
-//: * are reference types
-//: * can be subclassed
+//: - are reference types
+//: - can be subclassed
 
 //: ## Create a class
 class Person {
@@ -43,6 +43,6 @@ class SpecificPerson: Person {
 
 //: ## Final classes
 final class NotSubclassable {
-
+    //
 }
 
